@@ -33,3 +33,21 @@
         }
     }
 }
+
+@media (max-width: 670px) {
+    .container {
+        width: 100%;
+        min-height: 100%;
+        
+        flex-direction: row;
+
+        align-items: flex-start;
+        flex-wrap: wrap;
+
+        gap: 4rem;
+
+        img {
+            display: none;
+        }
+    }
+}
