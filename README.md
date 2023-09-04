@@ -1,4 +1,4 @@
-# Projeto Repositórios GitHub
+# Repositórios GitHub
 
 ## Iniciar Projeto
 
