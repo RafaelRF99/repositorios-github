@@ -1,17 +1,30 @@
 import styles from './SideBar.module.scss'
 
+import { useQuery } from 'react-query'
+import axios from 'axios'
+
+interface PerfilGitHub {
+    login: string
+    avatar_url: string
+    name: string
+    bio: string
+}
+
 export default function SideBar() {
+    const { data } = useQuery<PerfilGitHub>('Perfil', async () => {
+        const res = await axios.get('https://api.github.com/users/RafaelRF99')
+
+        return res.data
+    })
+
     return (
         <div className={styles.container}>
             <h1>Informações</h1>
-            <img
-                src="https://cdn-icons-png.flaticon.com/512/3364/3364044.png"
-                alt="Usuario"
-            />
+            <img src={data?.avatar_url} alt={data?.name} />
             <div className={styles.inform}>
-                <p>Nome</p>
-                <p>Descrição</p>
-                <p>Objetivo</p>
+                <p>Login: {data?.login}</p>
+                <p>Nome: {data?.name}</p>
+                <p>Biografia: {data?.bio}</p>
             </div>
         </div>
     )
