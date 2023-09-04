@@ -1,0 +1,17 @@
+.container {
+    width: 300px;
+    min-height: 200px;
+    height: 100%;
+
+    background-color: gray;
+
+    border-radius: 10px;
+    padding: 1rem;
+    
+    h1 {
+        display: inline-block;
+        border-bottom: 1px solid #000;
+        margin-bottom: 1.5rem;
+    }
+
+}
