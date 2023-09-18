@@ -10,9 +10,13 @@ interface PerfilGitHub {
     bio: string
 }
 
-export default function SideBar() {
+interface SideBarProps {
+    username: string
+}
+
+export default function SideBar({ username }: SideBarProps) {
     const { data } = useQuery<PerfilGitHub>('Perfil', async () => {
-        const res = await axios.get('https://api.github.com/users/RafaelRF99')
+        const res = await axios.get(`https://api.github.com/users/${username}`)
 
         return res.data
     })

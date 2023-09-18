@@ -6,6 +6,7 @@ import axios from 'axios'
 import SideBar from '../../components/SideBar'
 import MenuBar from '../../components/menuBar'
 import Reading from '../Reading'
+import { useUser } from '../../data/hooks/useUser'
 
 interface GithubApiProps {
     name: string
@@ -13,9 +14,11 @@ interface GithubApiProps {
 }
 
 export default function Layout() {
+    const { username } = useUser()
+
     const { data } = useQuery<GithubApiProps[]>('Repositório', async () => {
         const res = await axios.get(
-            'https://api.github.com/users/RafaelRF99/repos',
+            `https://api.github.com/users/${username}/repos`,
         )
 
         return res.data
@@ -23,7 +26,7 @@ export default function Layout() {
 
     return (
         <div className={styles.container}>
-            <SideBar />
+            <SideBar username={username} />
             <div className={styles.content}>
                 <div className={styles.menu}>
                     <MenuBar />
